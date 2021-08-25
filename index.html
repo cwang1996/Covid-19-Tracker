@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>Covid-19 Tracker</title>
+</head>
+<body>
+    <header>
+        <h1>Covid-19 Tracker</h1>
+    </header>
+
+    <div class='cards'>
+        <div class='card-items'>
+            <div class='item cases'>
+                <h2 class='title'>Cases</h2>
+                <span class='value'>0</span>
+                <span class='new-value cases-t'>+0</span><span class='desc'>Daily increase of cases of Covid-19.</span>
+            </div>
+            <div class='item recovered'>
+                <h2 class='title'>Recovered</h2>
+                <span class='value'>0</span>
+                <span class='new-value recovered-t'>+0</span><span class='desc'>Daily recoveries from Covid-19.</span>
+            </div>
+            <div class='item deaths'>
+                <h2 class='title'>Deaths</h2>
+                <span class='value'>0</span>
+                <span class='new-value deaths-t'>+0</span><span class='desc'>Daily deaths from Covid-19.</span>
+            </div>
+        </div>
+    </div>
+
+<div class='wrapper'>
+    <div class='country'>
+        <h2 class='country-name'>Country...</h2>
+        <span class='change-country'>Search</span>
+    </div>
+
+    <div class='search-container'>
+        <i class="exit fas fa-times"></i>
+        <div class='searchbar'>
+            <input class='searchcountry' type='input' placeholder='Search for a country'>
+        </div>
+        <div class='country-list'>
+        </div>
+    </div>
+</div>
+
+    <div class='chart'>
+        <canvas id='axes_line_chart'></canvas>
+    </div>
+
+    <script       
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
+        crossorigin="anonymous">
+    </script>
+    <script src='app.js'></script>
+    <script src='countries.js'></script>
+</body>
+</html>
