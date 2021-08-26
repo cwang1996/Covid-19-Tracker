@@ -12,11 +12,11 @@ const chart = document.getElementById('axes_line_chart').getContext('2d');
 
 let app_data = [],
     cases_list = [],
-    recovered_List = [],
+    recovered_list = [],
     deaths_list = [],
     dates = [];
 
-// USER COUNTRY CODE
+// USER COUNTRY CODE GEOLOCATION
 
 fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360d")
   .then((res) => {
@@ -39,7 +39,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
     user_country = country;
     country_name_element.innerHTML = "Loading...";
   
-    (cases_list = []),
+      (cases_list = []),
       (recovered_list = []),
       (deaths_list = []),
       (dates = []),
@@ -103,7 +103,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
     updateStats();
     axesLinearChart();
   }
-  
+
   function updateStats() {
     const total_cases = cases_list[cases_list.length - 1];
     const new_confirmed_cases = total_cases - cases_list[cases_list.length - 2];
@@ -122,6 +122,16 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
     new_recovered_element.innerHTML = `+${new_recovered_cases}`;
     deaths_element.innerHTML = total_deaths;
     new_deaths_element.innerHTML = `+${new_deaths_cases}`;
+
+    if(new_cases_element.textContent.includes('-')){
+      new_cases_element.innerHTML = `${new_confirmed_cases}`;
+    }
+    if(new_recovered_element.textContent.includes('-')){
+      new_recovered_element.innerHTML = `${new_confirmed_cases}`;
+    }
+    if(new_deaths_element.textContent.includes('-')){
+      new_deaths_element.innerHTML = `${new_deaths_cases}`;
+    }
   
     // FORMAT DATES
     dates.forEach((date) => {
