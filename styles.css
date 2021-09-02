@@ -145,9 +145,17 @@ header h1 {
     font-family: 'Poppins';
 }
 
+.search {
+    font-size: 14px;
+}
+
+.country-name {
+    font-size: 28px;
+}
+
 .change-country {
     position: relative;
-   height: 400px;
+    height: 400px;
 }
 
 .search-container {
