@@ -175,7 +175,6 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
           },
         ],
         labels: formatedDates,
-        // labels: ['Cases', 'Recovered', 'Deaths'],
       },
       options: {
         responsive: true,
