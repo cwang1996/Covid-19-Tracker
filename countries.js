@@ -1,4 +1,4 @@
-// ALL COUNTRY NAMES WITH THEIR ISO CODE
+// list of countries with their ISO code
 let country_list = [
     { name: 'USA', code: 'US' },
     { name: 'Spain', code: 'ES' },
@@ -205,12 +205,14 @@ let country_list = [
     { name: 'China', code: 'CN' }
 ];
 
+// declare DOM elements
 const search_country_elements = document.querySelector('.search-container');
 const country_list_element = document.querySelector('.country-list');
 const change_country_btn = document.querySelector('.change-country');
 const exit_btn = document.querySelector('.exit');
 const country_input = document.querySelector('.searchcountry');
 
+// shows the modal when 'search' button is clicked
 function searchBarShow() {
     change_country_btn.addEventListener('click', () => {
         country_list_element.classList.add('country-show');
@@ -220,6 +222,7 @@ function searchBarShow() {
     })
 }
 
+// exits the modal when the exit button is clicked
 function exitSearch() {
     exit_btn.addEventListener('click', ()=> {
         search_country_elements.classList.remove('search-show');
@@ -227,6 +230,7 @@ function exitSearch() {
     })
 }
 
+// toggles visibility of the list of countries
 function countryList() {
     country_list_element.addEventListener('click', ()=> {
         search_country_elements.classList.toggle('search-show');
@@ -234,9 +238,9 @@ function countryList() {
     })
 }
 
+// creates the country list from the country_list array
 function createCountryList() {
     const num_countries = country_list.length;
-
     let i = 0, ul_list_id;
 
     country_list.forEach( (country, index) => {
@@ -256,8 +260,7 @@ function createCountryList() {
 
 let num_of_ul_lists = 3;
 
-// FILTER
-
+// filter the country based on letter input on the searchbar
 function filterCountry() {
     country_input.addEventListener('input', () => {
         let value = country_input.value.toUpperCase();
@@ -271,12 +274,14 @@ function filterCountry() {
     })
 }
 
+// resets country after previous one was selected
 function resetCountry() {
     country_list.forEach(( country ) => {
         document.getElementById(country.name).classList.remove('hide');
     })
 }
 
+// function declarations
 createCountryList();
 searchBarShow();
 exitSearch();
