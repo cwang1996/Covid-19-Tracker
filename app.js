@@ -1,3 +1,4 @@
+// declare DOM elements
 const country_name_element = document.querySelector('.country-name');
 const total_cases_element = document.querySelector('.cases .value');
 const new_cases_element = document.querySelector('.cases .new-value');
@@ -5,19 +6,16 @@ const recovered_element = document.querySelector('.recovered .value');
 const new_recovered_element = document.querySelector('.recovered .new-value');
 const deaths_element = document.querySelector('.deaths .value');
 const new_deaths_element = document.querySelector('.deaths .new-value');
-
 const chart = document.getElementById('axes_line_chart').getContext('2d');
 
-// VARIABLES
-
+// declartion of variables
 let app_data = [],
     cases_list = [],
     recovered_list = [],
     deaths_list = [],
     dates = [];
 
-// USER COUNTRY CODE GEOLOCATION
-
+// user country geolocation (initial country on load based on geography)
 fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360d")
   .then((res) => {
     return res.json();
@@ -33,8 +31,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
     fetchData(user_country);
   });
 
-  // FETCH API
-
+  // fetch api for country covid statistics
   function fetchData(country) {
     user_country = country;
     country_name_element.innerHTML = "Loading...";
@@ -45,11 +42,12 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
       (dates = []),
       (formatedDates = []);
   
-    var requestOptions = {
+    let requestOptions = {
       method: "GET",
       redirect: "follow",
     };
   
+    // api for cases per country
     const api_fetch = async (country) => {
       await fetch(
         "https://api.covid19api.com/total/country/" + country + "/status/confirmed",
@@ -64,7 +62,8 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
             cases_list.push(entry.Cases);
           });
         });
-  
+
+      // api for recovered per country
       await fetch(
         "https://api.covid19api.com/total/country/" + country + "/status/recovered",
         requestOptions
@@ -78,6 +77,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
           });
         });
   
+      // api for deaths per country
       await fetch(
         "https://api.covid19api.com/total/country/" + country + "/status/deaths",
         requestOptions
@@ -97,13 +97,13 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
     api_fetch(country);
   }
 
-  // UPDATE UI FUNCTION
-
+  // updates the ui
   function updateUI() {
     updateStats();
     axesLinearChart();
   }
 
+  // displays the new daily change of cases/recovered/deaths
   function updateStats() {
     const total_cases = cases_list[cases_list.length - 1];
     const new_confirmed_cases = total_cases - cases_list[cases_list.length - 2];
@@ -114,7 +114,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
     const total_deaths = deaths_list[deaths_list.length - 1];
     const new_deaths_cases = total_deaths - deaths_list[deaths_list.length - 2];
   
-    // INNERHTML
+    // innerHTML to display data
     country_name_element.innerHTML = user_country;
     total_cases_element.innerHTML = total_cases;
     new_cases_element.innerHTML = `+${new_confirmed_cases}`;
@@ -133,13 +133,13 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
       new_deaths_element.innerHTML = `${new_deaths_cases}`;
     }
   
-    // FORMAT DATES
+    // format the dates on the chart
     dates.forEach((date) => {
       formatedDates.push(formatDate(date));
     });
   }
   
-  // UPDATE CHART
+  // updates the chart, destroys previous chart when new country is selected
   let my_chart;
   function axesLinearChart() {
     if (my_chart) {
@@ -183,7 +183,7 @@ fetch("https://api.ipgeolocation.io/ipgeo?apiKey=14c7928d2aef416287e034ee91cd360
     });
   }
   
-  // FORMAT DATES
+  // format dates based on month
   const monthsNames = [
     "Jan",
     "Feb",
