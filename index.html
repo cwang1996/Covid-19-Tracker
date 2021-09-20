@@ -9,12 +9,12 @@
     <title>Covid-19 Tracker</title>
 </head>
 <body>
+    <!-- title -->
     <header>
         <h1>Covid-19 Tracker</h1>
     </header>
 
-    <!-- CARD SECTION SHOWING THE NUMBER OF CASES, RECOVERED, AND DEATHS -->
-
+    <!-- card items for cases, recovered, deaths -->
     <div class='cards'>
         <div class='card-items'>
             <div class='item cases'>
@@ -35,26 +35,25 @@
         </div>
     </div>
 
-    <!-- SEARCH MODAL TO SELECT DIFFERENT COUNTRIES -->
+    <!-- modal to select/search for countries -->
+    <div class='wrapper'>
+        <div class='country'>
+            <h2 class='country-name'>Country...</h2>
+            <i class="search fas fa-search"></i>
+            <span class='change-country'>Search</span>
+        </div>
 
-<div class='wrapper'>
-    <div class='country'>
-        <h2 class='country-name'>Country...</h2>
-        <span class='change-country'>Search</span>
+        <div class='search-container'>
+            <i class="exit fas fa-times"></i>
+            <div class='searchbar'>
+                <input class='searchcountry' type='input' placeholder='Search for a country'>
+            </div>
+            <div class='country-list'>
+            </div>
+        </div>
     </div>
 
-    <div class='search-container'>
-        <i class="exit fas fa-times"></i>
-        <div class='searchbar'>
-            <input class='searchcountry' type='input' placeholder='Search for a country'>
-        </div>
-        <div class='country-list'>
-        </div>
-    </div>
-</div>
-
-<!-- CHART.JS -->
-
+    <!-- chart.js -->
     <div class='chart'>
         <canvas id='axes_line_chart'></canvas>
     </div>
