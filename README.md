@@ -4,7 +4,7 @@
 
 </br >
 
-![COVID-19]()
+![COVID-19](https://user-images.githubusercontent.com/76964814/143176139-45ab0bae-1d8a-4277-b083-59e63c64457f.png)
 
 ## Introduction
 This is a code repository for my COVID-19 tracker website. A fully reponsive SPA that displays the total cases of COVID for every country. Built using HTML, CSS, JavaScript, and Chart.js.
@@ -19,3 +19,4 @@ Notable Features:
 Featured ideas to implement:
 
 - Ability to see the global statistics of COVID
+- Dark mode function
