@@ -1,4 +1,4 @@
-# COVID-19 Tracker
+# COVID-19 Tracke
 
 ### [Live Site](https://cwang1996.github.io/Covid-19-Tracker/)
 
